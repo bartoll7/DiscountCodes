@@ -67,8 +67,23 @@ class AlphanumericCodeGeneratorTest extends TestCase
     {
         $codes = $this->generator->generateCodes($quantity, $length);
 
+        $this->assertRegExp('/[a-zA-Z0-9]/', $codes[0]);
         $this->assertEquals($length, strlen($codes[0]));
         $this->assertCount($quantity, $codes);
+    }
+
+    /**
+     * @test
+     * @dataProvider correctDataProvider
+     * @var $quantity
+     * @var $length
+     */
+    public function checkIfCodesAreUnique($quantity, $length)
+    {
+        $codes = $this->generator->generateCodes($quantity, $length);
+        $unique = array_unique($codes);
+
+        $this->assertEquals(count($codes), count($unique));
     }
 
     public function invalidDataProvider()

@@ -8,13 +8,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class DefaultController extends Controller
+class CodesController extends Controller
 {
     const FILE_NAME = 'codes.txt';
 
     /**
-     * @Route("/codes", name="code")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/codes", name="codes")
+     * @return Response
      */
     public function indexAction(Request $request)
     {
@@ -35,7 +35,7 @@ class DefaultController extends Controller
                 ->generateFile($codes, self::FILE_NAME);
 
             return new Response(
-                'File with codes was generated in your directory',
+                'File with codes was generated in directory specified in parameters.yml',
                 Response::HTTP_CREATED
             );
         }

@@ -1,0 +1,11 @@
+services:
+    app.alphanumeric_code_generator:
+        class: AppBundle\Generator\AlphanumericCodeGenerator
+        arguments: ['@app.alphanumeric_data_provider']
+
+    app.alphanumeric_data_provider:
+        class: AppBundle\DataProvider\AlphanumericDataProvider
+
+    app.text_file_generator:
+        class: AppBundle\Generator\File\TextFileGenerator
+        arguments: ['%generated_codes_directory%']

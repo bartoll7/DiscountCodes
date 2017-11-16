@@ -66,8 +66,6 @@ class AlphanumericCodeGenerator implements CodeGenerator
     {
         $unique = array_unique($result);
 
-        if (count($result) === count($unique)) return true;
-
-        return false;
+        return count($result) === count($unique);
     }
 }
